@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact Us - My School</title>
+<style>
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f4f9;
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  .container {
+    max-width: 700px;
+    background: white;
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  }
+  h1 {
+    font-size: 3rem;
+    color: #004080;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  input, textarea {
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    border: 2px solid #0070d1;
+    border-radius: 12px;
+    resize: none;
+  }
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #004080;
+    box-shadow: 0 0 8px #004080;
+  }
+  button.submit-btn {
+    background: #0070d1;
+    color: white;
+    border: none;
+    padding: 16px;
+    font-size: 1.25rem;
+    border-radius: 14px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0, 112, 209, 0.4);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  button.submit-btn:hover {
+    background: #004a7c;
+    transform: translateY(-4px);
+  }
+  .contact-info {
+    margin-top: 35px;
+    font-size: 1.15rem;
+    color: #004080;
+  }
+  .contact-info p {
+    margin: 8px 0;
+  }
+  .contact-info strong {
+    color: #0070d1;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Contact Us</h1>
+
+  <form action="#" method="post">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit" class="submit-btn">Send Message</button>
+  </form>
+
+  <div class="contact-info">
+    <p><strong>Address:</strong> 123 School Road, City, State, 123456</p>
+    <p><strong>Phone:</strong> +91 98765 43210</p>
+    <p><strong>Email:</strong> <a href="mailto:contact@myschool.edu" style="color:#0070d1; text-decoration:none;">contact@myschool.edu</a></p>
+  </div>
+</div>
+
+</body>
+</html>

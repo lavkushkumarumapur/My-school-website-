@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Our Courses - My School</title>
+<style>
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #eef4fb;
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+  }
+  .container {
+    max-width: 900px;
+    background: white;
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  }
+  h1 {
+    font-size: 3rem;
+    color: #004080;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .course-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+  }
+  .course-card {
+    background: #f7faff;
+    border-radius: 15px;
+    padding: 20px 25px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+  .course-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px rgba(0, 64, 128, 0.25);
+  }
+  .course-card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+    color: #0066cc;
+  }
+  .course-card p {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Our Courses</h1>
+
+  <div class="course-list">
+    <div class="course-card">
+      <h2>Science Stream</h2>
+      <p>Physics, Chemistry, Biology, Mathematics, Computer Science. Focus on practicals and research projects.</p>
+    </div>
+
+    <div class="course-card">
+      <h2>Commerce Stream</h2>
+      <p>Accountancy, Business Studies, Economics, Mathematics, Entrepreneurship. Emphasis on business skills.</p>
+    </div>
+
+    <div class="course-card">
+      <h2>Arts / Humanities Stream</h2>
+      <p>History, Political Science, Geography, Sociology, Psychology, Languages. Encourages critical thinking.</p>
+    </div>
+
+    <div class="course-card">
+      <h2>Sports and Physical Education</h2>
+      <p>Physical training, sports coaching, yoga, and fitness programs for overall wellness.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

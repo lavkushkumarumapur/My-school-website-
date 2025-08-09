@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Admin Dashboard - My School</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #f0f8ff;
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+  }
+
+  @keyframes rainbow {
+    0%{color:#ff0040;}
+    14%{color:#ff9900;}
+    28%{color:#fffb00;}
+    42%{color:#33ff00;}
+    57%{color:#00ffcc;}
+    71%{color:#0033ff;}
+    85%{color:#cc00ff;}
+    100%{color:#ff0040;}
+  }
+
+  .welcome-text {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    animation: rainbow 6s linear infinite;
+    text-align: center;
+  }
+
+  .quick-links {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .quick-links button {
+    background: #0070d1;
+    border: none;
+    color: white;
+    font-size: 1.25rem;
+    padding: 15px 28px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 112, 209, 0.5);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .quick-links button:hover {
+    background: #004a7c;
+    transform: translateY(-6px);
+  }
+
+  .dashboard-content {
+    max-width: 1150px;
+    width: 100%;
+    background: white;
+    border-radius: 20px;
+    padding: 30px 40px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+    min-height: 420px;
+  }
+
+  .dashboard-section {
+    display: none;
+  }
+  .dashboard-section.active {
+    display: block;
+  }
+
+  .dashboard-section h2 {
+    color: #004080;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  /* Simple styling for content lists */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    background: #e6f0ff;
+    padding: 12px 18px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    box-shadow: inset 0 0 10px #bbd1ff;
+    font-weight: 600;
+    color: #003366;
+  }
+
+</style>
+</head>
+<body>
+
+  <h1 class="welcome-text">Welcome, Admin</h1>
+
+  <div class="quick-links">
+    <button onclick="showSection('memberList')">Member List</button>
+    <button onclick="showSection('importantDocs')">Important Documents</button>
+    <button onclick="showSection('schoolFiles')">School Files</button>
+    <button onclick="showSection('newsUpdates')">News Updates</button>
+  </div>
+
+  <div class="dashboard-content">
+    <section id="memberList" class="dashboard-section active">
+      <h2>Member List</h2>
+      <ul>
+        <li>Lav Kush Kumar - Principal</li>
+        <li>Priya Sharma - Teacher</li>
+        <li>Rohan Verma - Student</li>
+        <li>Anjali Singh - Admin Staff</li>
+      </ul>
+    </section>
+
+    <section id="importantDocs" class="dashboard-section">
+      <h2>Important Documents</h2>
+      <ul>
+        <li>School Annual Report 2024.pdf</li>
+        <li>Board Exam Guidelines.pdf</li>
+        <li>Fee Structure 2025.docx</li>
+        <li>Staff Leave Policy.pdf</li>
+      </ul>
+    </section>
+
+    <section id="schoolFiles" class="dashboard-section">
+      <h2>School Files</h2>
+      <ul>
+        <li>Timetable.xlsx</li>
+        <li>Event Schedule.pdf</li>
+        <li>Library Inventory.docx</li>
+        <li>Sports Meet Details.pdf</li>
+      </ul>
+    </section>
+
+    <section id="newsUpdates" class="dashboard-section">
+      <h2>News Updates</h2>
+      <ul>
+        <li>School reopens on 1st July after summer break.</li>
+        <li>New sports coach joined the school team.</li>
+        <li>Inter-school science competition scheduled for August.</li>
+        <li>Annual cultural fest planned for December.</li>
+      </ul>
+    </section>
+  </div>
+
+<script>
+  function showSection(sectionId) {
+    const sections = document.querySelectorAll('.dashboard-section');
+    sections.forEach(sec => {
+      sec.classList.remove('active');
+    });
+    document.getElementById(sectionId).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
