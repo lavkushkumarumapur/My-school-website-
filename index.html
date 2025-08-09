@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>My School - Home & Login</title>
+<style>
+    /* Reset & font */
+    * {
+        margin: 0; padding: 0; box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+        background: #f0f4f8;
+        color: #333;
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Header */
+    header {
+        background: #00539C;
+        color: white;
+        padding: 20px 40px;
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: bold;
+        letter-spacing: 2px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        user-select: none;
+        flex-shrink: 0;
+    }
+
+    /* Navbar - Home and Login Buttons */
+    nav {
+        margin: 30px auto 20px;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        max-width: 600px;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+    }
+    nav button {
+        background: #0081C9;
+        color: white;
+        padding: 18px 40px;
+        font-size: 1.2rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 15px rgba(0, 129, 201, 0.3);
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        perspective: 1000px;
+    }
+    nav button:hover, nav button.active {
+        background: #00539C;
+        box-shadow: 0 15px 20px rgba(0, 83, 156, 0.6);
+        transform: translateY(-6px) rotateX(10deg);
+    }
+
+    main {
+        max-width: 1100px;
+        margin: 0 auto 80px;
+        padding: 0 20px;
+        flex-grow: 1;
+    }
+
+    section {
+        display: none;
+    }
+    section.active {
+        display: block;
+    }
+
+    /* Big option buttons arranged in 2 rows and 2 columns */
+    .big-options {
+        display: grid;
+        grid-template-columns: repeat(2, 170px);
+        grid-template-rows: repeat(2, 50px);
+        justify-content: center;
+        gap: 20px 40px;
+        margin-bottom: 45px;
+        user-select: none;
+    }
+    .big-options a {
+        background: #3399FF;
+        color: white;
+        font-size: 1.15rem;
+        font-weight: 600;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(51, 153, 255, 0.3);
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        width: 170px;
+        height: 50px;
+        white-space: nowrap;
+    }
+    .big-options a:hover {
+        background: #0066CC;
+        box-shadow: 0 15px 35px rgba(0, 102, 204, 0.6);
+        border-color: #004080;
+        transform: translateY(-4px);
+    }
+
+    /* About section */
+    .about {
+        background: white;
+        padding: 30px 35px;
+        border-radius: 15px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        margin-bottom: 40px;
+    }
+    .about h2 {
+        color: #00539C;
+        margin-bottom: 20px;
+        font-size: 2rem;
+        text-align: center;
+    }
+    .about p {
+        font-size: 1.1rem;
+        color: #444;
+        max-width: 900px;
+        margin: 0 auto;
+        line-height: 1.6;
+        text-align: justify;
+    }
+
+    /* Courses section */
+    .courses {
+        margin-bottom: 40px;
+    }
+    .courses h2 {
+        color: #00539C;
+        margin-bottom: 20px;
+        font-size: 2rem;
+        text-align: center;
+    }
+    .course-list {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+    .course-item {
+        background: white;
+        width: 280px;
+        padding: 20px 25px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        text-align: center;
+        transition: transform 0.3s ease;
+        cursor: default;
+    }
+    .course-item:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+    .course-item h3 {
+        color: #0073cc;
+        margin-bottom: 12px;
+        font-size: 1.3rem;
+    }
+    .course-item p {
+        font-size: 1rem;
+        color: #555;
+    }
+
+    /* Contact section */
+    .contact {
+        background: white;
+        padding: 30px 40px;
+        border-radius: 15px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .contact h2 {
+        color: #00539C;
+        margin-bottom: 25px;
+        font-size: 2rem;
+    }
+    .contact p {
+        font-size: 1.15rem;
+        margin-bottom: 15px;
+        color: #444;
+    }
+    .contact a {
+        color: #0081C9;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+    .contact a:hover {
+        color: #00539C;
+    }
+
+    /* Login Section */
+    .login-container {
+        background: white;
+        padding: 40px 50px 30px;
+        border-radius: 15px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        width: 360px;
+        margin: 0 auto 40px;
+        text-align: center;
+    }
+    .login-container h2 {
+        margin-bottom: 15px;
+        color: #00539C;
+    }
+
+    /* Animated Admin text */
+    @keyframes colorCycle {
+        0% { color: #0081C9; }
+        25% { color: #00539C; }
+        50% { color: #3399FF; }
+        75% { color: #0066CC; }
+        100% { color: #0081C9; }
+    }
+    .admin-note {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        font-weight: 600;
+        user-select: none;
+        animation: colorCycle 6s linear infinite;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 14px 15px;
+        margin: 12px 0 25px 0;
+        border: 1.8px solid #0081C9;
+        border-radius: 10px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus, input[type="password"]:focus {
+        border-color: #00539C;
+        box-shadow: 0 0 8px #00539C;
+    }
+    button.login-btn {
+        background: #0081C9;
+        border: none;
+        color: white;
+        padding: 14px 0;
+        width: 100%;
+        font-size: 1.1rem;
+        border-radius: 12px;
+        cursor: pointer;
+        box-shadow: 0 6px 15px rgba(0, 129, 201, 0.4);
+        transition: all 0.3s ease;
+        perspective: 1000px;
+    }
+    button.login-btn:hover {
+        background: #00539C;
+        box-shadow: 0 12px 24px rgba(0, 83, 156, 0.6);
+        transform: translateY(-4px) rotateX(10deg);
+    }
+    .message {
+        margin-top: 20px;
+        font-weight: 600;
+        display: none;
+    }
+    .message.error {
+        color: red;
+    }
+    .message.success {
+        color: green;
+    }
+
+    /* Footer - hidden */
+    footer {
+        display: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+        main {
+            padding: 0 15px;
+            max-width: 95%;
+        }
+        .course-list {
+            justify-content: center;
+        }
+        .big-options {
+            grid-template-columns: repeat(1, 170px);
+            grid-template-rows: repeat(4, 50px);
+            gap: 15px 0;
+            overflow-x: visible;
+        }
+        nav {
+            flex-wrap: wrap;
+            gap: 15px;
+            max-width: 95%;
+        }
+        .login-container {
+            width: 90%;
+            padding: 30px 20px 20px;
+        }
+    }
+</style>
+
+</head>
+<body>
+
+<header>My School</header>
+
+<nav>
+    <button id="homeBtn" class="active">Home</button>
+    <button id="loginBtn">Office Login</button>
+</nav>
+
+<main>
+
+<!-- Home Section -->
+<section id="homeSection" class="active">
+
+    <!-- Big Option Buttons arranged in grid 2x2 -->
+    <div class="big-options">
+        <a href="admission_open.html" class="btn-admission">Admission Open</a>
+        <a href="about_us.html" class="btn-about">About Us</a>
+        <a href="course.html">Courses</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+
+    <!-- About Us -->
+    <div class="about">
+        <h2>About Our School</h2>
+        <p>Our school is dedicated to providing excellent education to nurture young minds. 
+        We believe in holistic development, combining academics, sports, and arts to help every student reach their full potential.</p>
+    </div>
+
+    <!-- Courses -->
+    <div class="courses">
+        <h2>Our Popular Courses</h2>
+        <div class="course-list">
+            <div class="course-item">
+                <h3>Science Stream</h3>
+                <p>Physics, Chemistry, Biology, Mathematics – Prepare for top universities and professional careers.</p>
+            </div>
+            <div class="course-item">
+                <h3>Commerce Stream</h3>
+                <p>Accountancy, Business Studies, Economics – Ideal for future business leaders and professionals.</p>
+            </div>
+            <div class="course-item">
+                <h3>Arts & Humanities</h3>
+                <p>History, Political Science, Sociology – Explore social sciences and creative fields.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="contact">
+        <h2>Contact Us</h2>
+        <p>Address: 123 School Road, Cityname, State - 123456</p>
+        <p>Email: <a href="mailto:info@myschool.edu">info@myschool.edu</a></p>
+        <p>Phone: +91 98765 43210</p>
+    </div>
+</section>
+
+<!-- Login Section -->
+<section id="loginSection">
+    <div class="login-container">
+        <div class="admin-note">Admin के लिए</div>
+        <h2>Office Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required />
+            <input type="password" id="password" placeholder="Password" required />
+            <button type="submit" class="login-btn"
+
+>Login</button>
+        </form>
+
+        <div class="message" id="message"></div>
+    </div>
+</section>
+
+</main>
+
+<footer></footer>
+
+<script>
+    const homeBtn = document.getElementById('homeBtn');
+    const loginBtn = document.getElementById('loginBtn');
+    const homeSection = document.getElementById('homeSection');
+    const loginSection = document.getElementById('loginSection');
+    const message = document.getElementById('message');
+    const footer = document.querySelector('footer');
+
+    function showSection(section) {
+        if(section === 'home') {
+            homeSection.classList.add('active');
+            loginSection.classList.remove('active');
+            homeBtn.classList.add('active');
+            loginBtn.classList.remove('active');
+            message.style.display = 'none';
+            footer.style.display = 'none';
+        } else {
+            homeSection.classList.remove('active');
+            loginSection.classList.add('active');
+            homeBtn.classList.remove('active');
+            loginBtn.classList.add('active');
+            message.style.display = 'none';
+            footer.style.display = 'none';
+        }
+    }
+
+    homeBtn.addEventListener('click', () => showSection('home'));
+    loginBtn.addEventListener('click', () => showSection('login'));
+
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        if(username === 'admin' && password === '1234') {
+            message.className = 'message success';
+            message.textContent = 'Login Successful! Redirecting...';
+            message.style.display = 'block';
+
+            setTimeout(() => {
+                alert('Redirecting to dashboard...');
+                // window.location.href = 'dashboard.html';
+            }, 1500);
+        } else {
+            message.className = 'message error';
+            message.textContent = 'Invalid username or password!';
+            message.style.display = 'block';
+        }
+    });
+
+    showSection('home');
+</script>
+
+</body>
+</html>
